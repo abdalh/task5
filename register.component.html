@@ -1,0 +1,44 @@
+
+
+<form #userform="ngForm" >
+
+        <label for="full_name">Name</label>
+        <input type="text" name="name"  [class.is-invalid]="myname.invalid && myname.touched"
+         required #myname="ngModel" [(ngModel)]="user.name" class="form-control" 
+        id="full_name" aria-describedby="emailHelp" placeholder="Enter email"  pattern="[A-Za-z]{1,32}">
+        <small class="text-danger" [class.d-none]="myname.valid || myname.untouched"> enter a valid name</small> 
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" name="email"  [class.is-invalid]="myemail.invalid && myemail.touched"
+       required #myemail="ngModel" [(ngModel)]="user.email" class="form-control" 
+      id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" >
+      <small class="text-danger" [class.d-none]="myemail.valid || myemail.untouched"> enter a valid email</small>
+
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password"  name="password"  [class.is-invalid]="mypass.invalid && mypass.touched" required #mypass="ngModel" [(ngModel)]="user.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <small class="text-danger" [class.d-none]="mypass.valid || mypass.untouched"> enter a valid password</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1"> Repeat Password</label>
+        <input type="password" name="conpassword"   [class.is-invalid]="myrepass.invalid && myrepass.touched" required #myrepass="ngModel" [(ngModel)]="user.conpassword" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <small class="text-danger" [class.d-none]="myrepass.valid || myrepass.untouched"> enter a valid password</small>
+
+    </div>  
+
+<br>
+
+    <div class="form-group">
+        <select  name="droplist"   [class.is-invalid]="mytopic.invalid && mytopic.touched" required #mytopic="ngModel" [(ngModel)]="user.topic" class="custom-select">
+          <option selected>wher you hear about us </option>
+          <option *ngFor="let item of topics"> {{item}} </option>
+        </select>
+        <small class="text-danger" [class.d-none]="mytopic.valid || mytopic.untouched"> choose one </small>
+
+      </div>
+      <br>
+    <button type="submit" class="btn btn-primary">register</button>
